@@ -27,6 +27,26 @@ class PagesController extends Controller
                 'id' => 4,
                 'content' => 'Este es mi cuarto mensaje',
                 'image' => 'http://lorempixel.com/600/338?4'
+            ],
+            [
+                'id' => 5,
+                'content' => 'Este es mi tercer mensaje',
+                'image' => 'http://lorempixel.com/600/338?5'
+            ],
+            [
+                'id' => 6,
+                'content' => 'Este es mi cuarto mensaje',
+                'image' => 'http://lorempixel.com/600/338?6'
+            ],
+            [
+                'id' => 7,
+                'content' => 'Este es mi tercer mensaje',
+                'image' => 'http://lorempixel.com/600/338?7'
+            ],
+            [
+                'id' => 8,
+                'content' => 'Este es mi cuarto mensaje',
+                'image' => 'http://lorempixel.com/600/338?8'
             ]
         ];
 

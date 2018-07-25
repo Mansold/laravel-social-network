@@ -14,19 +14,29 @@
         </ul>
     </nav>
 </div>
+<div class="container">
 <div class="row">
-    @forelse($messages as $message)
-        <div class="col-6">
-            <img class="img-thumbnail" src="{{$message['image']}}">
-            <p class="card-text">
-                {{$message['content']}}
-                <a href="/messages/{{$message['id']}}">Leer más...</a>
-            </p>
-        </div>
-    @empty
-        <div class="col-12">
-            <p>No hay mensajes destacados.</p>
-        </div>
-    @endforelse
+    <div class="card-deck">
+        @forelse($messages as $message)
+            <div class="col-4 mb-3">
+                <div class="card">
+                    <img class="card-img-top" src="{{$message['image']}}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">{{$message['content']}}</p>
+                        <a href="/messages/{{$message['id']}}">Leer más...</a>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                </div>
+            </div>
+        @empty
+            <div class="col-12">
+                <p>No hay mensajes destacados.</p>
+            </div>
+        @endforelse
+    </div>
+</div>
 </div>
 @endsection
