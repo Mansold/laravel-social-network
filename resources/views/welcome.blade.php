@@ -76,6 +76,12 @@
             </div>
         @endforeach
     </div>
+
+    @if(count($messages))
+        <div class="pagination justify-content-center">
+            {{ $messages }}
+        </div>
+    @endif
     
 </div>
 </div>
