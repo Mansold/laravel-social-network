@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Message;
+use App\Http\Requests\MessageRequest;
 
 class MessagesController extends Controller
 {
@@ -17,14 +18,8 @@ class MessagesController extends Controller
         ]);
     }
 
-    public function create(Request $request)
+    public function create(MessageRequest $request)
     {
-        $this->validate($request, [
-            'message' =>  ['required', 'max:250']
-        ],
-        [
-            'message.required' => 'Por favor, escribe un mensaje',
-            'message.max' => 'El mensaje no puede superar los 250 caracteres'
-        ]);
+        return '';
     }
 }
