@@ -15,6 +15,22 @@
     </nav>
 </div>
 <div class="container">
+
+    <div class="row">
+        <form action="/messages/create" method="post">
+            {{ csrf_field() }}
+            {{--  @csrf --}}
+            <div class="form-group">
+                <input type="text" name="message" class="form-control" placeholder="¿Qué estas pensando?">
+                @if ($errors->any())
+                    @foreach($errors->get('message') as $error)
+                        <div>{{ $error }}</div>
+                    @endforeach
+                @endif
+            </div>
+        </form>
+    </div>
+
 <div class="row">
     <div class="card-deck">
         @forelse($messages as $message)

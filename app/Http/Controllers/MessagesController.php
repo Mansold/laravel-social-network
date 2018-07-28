@@ -16,4 +16,11 @@ class MessagesController extends Controller
             'message' => $message
         ]);
     }
+
+    public function create(Request $request)
+    {
+        $this->validate($request, [
+            'message' =>  'required'
+        ]);
+    }
 }
