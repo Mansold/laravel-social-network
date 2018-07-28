@@ -20,11 +20,11 @@
         @forelse($messages as $message)
             <div class="col-4 mb-3">
                 <div class="card">
-                    <img class="card-img-top" src="{{$message['image']}}" alt="Card image cap">
+                    <img class="card-img-top" src="{{ $message->image }}" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
-                        <p class="card-text">{{$message['content']}}</p>
-                        <a href="/messages/{{$message['id']}}">Leer más...</a>
+                        <p class="card-text">{{ $message->content }}</p>
+                        <a href="/messages/{{ $message->id }}">Leer más...</a>
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">Last updated 3 mins ago</small>
@@ -32,8 +32,11 @@
                 </div>
             </div>
         @empty
-            <div class="col-12">
-                <p>No hay mensajes destacados.</p>
+            <div class="col-md-auto">
+                <div class="alert alert-warning" role="alert">
+                    <h4 class="alert-heading">Sorry!</h4>
+                    <p class="mb-0">No hay mensajes destacados. Te recomendamos crear alguno en la BBDD.</p>
+                </div>
             </div>
         @endforelse
     </div>
