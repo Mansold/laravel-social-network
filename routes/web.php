@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'PagesController@home');
+Route::get('/message/{id}', 'MessagesController@show');
 
 Route::get('/about', function () {
     return view('about');
