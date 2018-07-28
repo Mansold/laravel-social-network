@@ -24,15 +24,17 @@ class MessageRequest extends FormRequest
     public function rules()
     {
         return [
-            'message' =>  ['required', 'max:250']
+            'title' =>  ['required', 'max:80'],
+            'content' => 'required'
         ];
     }
 
     public function messages()
     {
         return [
-            'message.required' => 'Por favor, escribe un mensaje',
-            'message.max' => 'El mensaje no puede superar los 250 caracteres'
+            'title.required' => 'Por favor, escribe un titulo para el mensaje',
+            'title.max' => 'El titulo no puede superar los 80 caracteres',
+            'content.required' => 'El mensaje es obligatorio'
         ];
     }
 }
