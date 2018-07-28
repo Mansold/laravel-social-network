@@ -20,11 +20,11 @@
         <form action="/messages/create" method="post">
             {{ csrf_field() }}
             {{--  @csrf --}}
-            <div class="form-group">
+            <div class="form-group @if($errors->has('message')) has-danger @endif">
                 <input type="text" name="message" class="form-control" placeholder="¿Qué estas pensando?">
                 @if ($errors->any())
                     @foreach($errors->get('message') as $error)
-                        <div>{{ $error }}</div>
+                        <div class"form-control-feedback">{{ $error }}</div>
                     @endforeach
                 @endif
             </div>
