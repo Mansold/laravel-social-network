@@ -12,8 +12,8 @@
 */
 
 Route::get('/', 'PagesController@home');
-Route::get('/message/{id}', 'MessagesController@show');
-Route::post('/message/create', 'MessagesController@create');
+Route::get('/messages/{message}', 'MessagesController@show');
+Route::post('/messages/create', 'MessagesController@create');
 
 Route::get('/about', function () {
     return view('about');

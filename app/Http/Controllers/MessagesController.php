@@ -20,6 +20,11 @@ class MessagesController extends Controller
 
     public function create(MessageRequest $request)
     {
-        return '';
+        $message = Message::create([
+            'content' => $request->input('message'),
+            'image' => 'http://placeimg.com/600/400?'.mt_rand(0,1000)
+        ]);
+
+        return redirect('/messages/' . $message->id);
     }
 }
