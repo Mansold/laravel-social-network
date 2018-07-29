@@ -2,36 +2,46 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="card-deck">
-        <h1>{{ $user->name }}</h1>
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title">{{ $user->name }}</h1>
+
+            {{-- Follow/unfollow form --}}
+            @if(Auth::check())
+                @if(!Auth::user()->isFollowing($user))
+                    <form action="/{{ $user->username }}/follow" method="post">
+                        {{ csrf_field() }}
+                        @if(session('success'))
+                            <span class="alert alert-warning">{{session('success')}}</span>
+                        @endif
+
+                        <button class="btn btn-primary">Follow</button>
+                    </form>
+                @else
+                    <form action="/{{ $user->username }}/unfollow" method="post">
+                        {{ csrf_field() }}
+                        @if(session('success'))
+                            <span class="alert alert-primary">{{session('success')}}</span>
+                        @endif
+                        
+                        <button class="btn btn-danger">Unfollow</button>
+                    </form>
+                @endif
+            @endif
+
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-secondary" href="/{{ $user->username }}/follows">
+                Siguiendo: <span class="badge badge-pill badge-success">{{ $user->follows->count() }}</span>
+            </a>
+            <a class="btn btn-secondary" href="/{{ $user->username }}/followers">
+                Seguidores: <span class="badge badge-pill badge-info">{{ $user->followers->count() }}</span>
+            </a>
         </div>
     </div>
-
-    @if(Auth::check())
-    <div class="row">
-        @if(!Auth::user()->isFollowing($user))
-            <form action="/{{ $user->username }}/follow" method="post">
-                {{ csrf_field() }}
-                @if(session('success'))
-                    <span class="">{{session('success')}}</span>
-                @endif
-
-                <button class="btn btn-primary">Follow</button>
-            </form>
-        @else
-            <form action="/{{ $user->username }}/unfollow" method="post">
-                {{ csrf_field() }}
-                @if(session('success'))
-                    <span class="">{{session('success')}}</span>
-                @endif
-                
-                <button class="btn btn-primary">Unfollow</button>
-            </form>
-        @endif
-    </div>
-    @endif
-
+    <br>
+    
+    {{-- User->Messages --}}
     <div class="row">
         @forelse($messages as $message)
             <div class="col-6 mb-3">

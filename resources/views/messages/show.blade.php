@@ -2,10 +2,6 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="card-deck">
-            @include('messages.message')
-        </div>
-    </div>
+    @include('messages.message')
 </div>
 @endsection
