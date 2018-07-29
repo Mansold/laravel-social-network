@@ -9,6 +9,17 @@
     </div>
 
     <div class="row">
+        <form action="/{{ $user->username }}/follow" method="post">
+            {{ csrf_field() }}
+            @if(session('success'))
+                <span class="">{{session('success')}}</span>
+            @endif
+            <button class="btn btn-primary">Follow</button>
+            <button class="btn btn-primary">Unfollow</button>
+        </form>
+    </div>
+
+    <div class="row">
         @forelse($messages as $message)
             <div class="col-6 mb-3">
                 @include('messages.message')

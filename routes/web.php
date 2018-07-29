@@ -25,7 +25,8 @@ Route::post('/messages/create', 'MessagesController@create')->middleware('auth')
 
 //Rutas de Usuarios
 Route::get('/{username}', 'UsersController@show');
-Route::get('/{username}/follows', 'UserController@follows');
+Route::get('/{username}/follows', 'UsersController@follows');
+Route::post('/{username}/follow', 'UsersController@follow');
 
 
 
