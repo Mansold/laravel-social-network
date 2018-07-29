@@ -8,16 +8,29 @@
         </div>
     </div>
 
+    @if(Auth::check())
     <div class="row">
-        <form action="/{{ $user->username }}/follow" method="post">
-            {{ csrf_field() }}
-            @if(session('success'))
-                <span class="">{{session('success')}}</span>
-            @endif
-            <button class="btn btn-primary">Follow</button>
-            <button class="btn btn-primary">Unfollow</button>
-        </form>
+        @if(!Auth::user()->isFollowing($user))
+            <form action="/{{ $user->username }}/follow" method="post">
+                {{ csrf_field() }}
+                @if(session('success'))
+                    <span class="">{{session('success')}}</span>
+                @endif
+
+                <button class="btn btn-primary">Follow</button>
+            </form>
+        @else
+            <form action="/{{ $user->username }}/unfollow" method="post">
+                {{ csrf_field() }}
+                @if(session('success'))
+                    <span class="">{{session('success')}}</span>
+                @endif
+                
+                <button class="btn btn-primary">Unfollow</button>
+            </form>
+        @endif
     </div>
+    @endif
 
     <div class="row">
         @forelse($messages as $message)

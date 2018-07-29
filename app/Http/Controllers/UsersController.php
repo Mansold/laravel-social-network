@@ -30,7 +30,7 @@ class UsersController extends Controller
 
         $logged->follows()->attach($user);
 
-        return redirect('/$username')->withSuccess('Ahora sigues a este usuario');
+        return redirect('/'.$username)->withSuccess('Ahora sigues a este usuario');
     }
 
     public function follows($username)
