@@ -11,7 +11,7 @@
     <div class="card-footer">
         <small class="text-muted">
             <a href="{{ $message->user->username }}">{{ $message->user->username }}</a>
-             - {{ $message->updated_at }}
+             - {{ $message->created_at }}
         </small>
     </div>
 </div>

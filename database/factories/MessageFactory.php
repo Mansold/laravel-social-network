@@ -7,5 +7,7 @@ $factory->define(App\Message::class, function (Faker $faker) {
         'title' => 'Alicia '.mt_rand(0,50),
         'content' => $faker->realText(500),
         'image' => 'http://placeimg.com/600/400?'.mt_rand(0,1000),
+        'created_at' => $faker->dateTimeThisDecade,
+        'updated_at' => $faker->dateTimeThisDecade,
     ];
 });

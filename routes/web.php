@@ -11,14 +11,21 @@
 |
 */
 
+//Rutas principales
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/about', function () {
+    return view('about');
+});
 
+//Rutas de mensajes
 Route::get('/', 'PagesController@home');
 Route::get('/messages/{message}', 'MessagesController@show');
 Route::post('/messages/create', 'MessagesController@create')->middleware('auth');
 
-Route::get('/about', function () {
-    return view('about');
-});
+//Rutas de Usuarios
+Route::get('/{username}', 'UsersController@show');
+Route::get('/{username}/follows', 'UserController@follows');
+
+
 
